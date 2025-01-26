@@ -35,7 +35,7 @@ export function useNavConfig() {
   const navItems: NavItem[] = [
     {
       title: 'Students',
-      path: '/students',
+      path: RoutePaths.STUDENTS,
       icon: <Iconify icon="solar:users-group-rounded-bold" width={24} />,
     },
     ...(isAuthenticated

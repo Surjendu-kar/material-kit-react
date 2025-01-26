@@ -460,7 +460,7 @@ export function StudentFormModal({
                   type="submit"
                   variant="contained"
                   size="large"
-                  disabled={isSubmitting || (student && !isDirty)}
+                  disabled={isSubmitting}
                   sx={{
                     px: 3,
                     py: 1,
