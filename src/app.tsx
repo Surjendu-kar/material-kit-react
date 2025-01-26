@@ -16,7 +16,9 @@ import { Iconify } from 'src/components/iconify';
 
 import { auth } from 'src/auth/config';
 
-const PUBLIC_PATHS = ['/sign-in', '/sign-up'];
+import { RoutePaths } from './enum/paths';
+
+const PUBLIC_PATHS = [RoutePaths.SIGN_IN, RoutePaths.SIGN_UP];
 
 export default function App() {
   useScrollToTop();
@@ -25,10 +27,10 @@ export default function App() {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      const isPublicPath = PUBLIC_PATHS.includes(location.pathname);
+      const isPublicPath = PUBLIC_PATHS.includes(location.pathname as RoutePaths);
 
       if (!user && !isPublicPath) {
-        navigate('/sign-in');
+        navigate(RoutePaths.SIGN_IN);
       } else if (user) {
         console.log('User is signed in:', user.email);
       }

@@ -1,8 +1,15 @@
-import { ReactNode, useCallback } from 'react';
-import { useAuthState } from 'src/hooks/use-auth-state';
-import { logout } from 'src/auth/auth';
-import { Iconify } from 'src/components/iconify';
+import type { ReactNode } from 'react';
+
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { useAuthState } from 'src/hooks/use-auth-state';
+
+import { RoutePaths } from 'src/enum/paths';
+
+import { Iconify } from 'src/components/iconify';
+
+import { logout } from 'src/auth/auth';
 
 type NavItem = {
   title: string;
@@ -19,7 +26,7 @@ export function useNavConfig() {
   const handleLogout = useCallback(async () => {
     try {
       await logout();
-      navigate('/sign-in');
+      navigate(RoutePaths.SIGN_IN);
     } catch (error) {
       console.error('Logout failed:', error);
     }

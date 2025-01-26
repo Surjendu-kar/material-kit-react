@@ -8,6 +8,7 @@ import { varAlpha } from 'src/theme/styles';
 import { AuthLayout } from 'src/layouts/auth';
 import { DashboardLayout } from 'src/layouts/dashboard';
 import { SignUpView } from 'src/sections/auth';
+import { RoutePaths } from '../enum/paths';
 
 // ----------------------------------------------------------------------
 
@@ -44,12 +45,10 @@ export function Router() {
           </Suspense>
         </DashboardLayout>
       ),
-      children: [
-        { path: 'students', element: <StudentsPage /> },
-      ],
+      children: [{ path: RoutePaths.STUDENTS.slice(1), element: <StudentsPage /> }],
     },
     {
-      path: 'sign-in',
+      path: RoutePaths.SIGN_IN.slice(1),
       element: (
         <AuthLayout>
           <SignInPage />
@@ -57,11 +56,11 @@ export function Router() {
       ),
     },
     {
-      path: '/',
-      element: <Navigate to="/students" replace />,
+      path: RoutePaths.ROOT,
+      element: <Navigate to={RoutePaths.STUDENTS} replace />,
     },
     {
-      path: 'sign-up',
+      path: RoutePaths.SIGN_UP.slice(1),
       element: (
         <AuthLayout>
           <SignUpView />
@@ -69,12 +68,12 @@ export function Router() {
       ),
     },
     {
-      path: '404',
+      path: RoutePaths.NOT_FOUND.slice(1),
       element: <Page404 />,
     },
     {
       path: '*',
-      element: <Navigate to="/404" replace />,
+      element: <Navigate to={RoutePaths.NOT_FOUND} replace />,
     },
   ]);
 }

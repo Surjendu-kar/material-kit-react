@@ -10,6 +10,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import { useRouter } from 'src/routes/hooks';
 
+import { RoutePaths } from 'src/enum/paths';
+
 import { Iconify } from 'src/components/iconify';
 
 import { signUp } from 'src/auth/auth';
@@ -39,7 +41,7 @@ export function SignUpView() {
 
       try {
         await signUp(email, password);
-        router.push('/sign-in');
+        router.push(RoutePaths.SIGN_IN);
       } catch (err) {
         setError('Failed to create account');
         console.error(err);
@@ -142,7 +144,7 @@ export function SignUpView() {
         <Typography variant="h5">Sign up</Typography>
         <Typography variant="body2" color="text.secondary">
           Already have an account?
-          <Link variant="subtitle2" sx={{ ml: 0.5 }} href="/sign-in">
+          <Link variant="subtitle2" sx={{ ml: 0.5 }} href={RoutePaths.SIGN_IN}>
             Sign in
           </Link>
         </Typography>

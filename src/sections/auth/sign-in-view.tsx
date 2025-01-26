@@ -10,6 +10,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import { useRouter } from 'src/routes/hooks';
 
+import { RoutePaths } from 'src/enum/paths';
+
 import { Iconify } from 'src/components/iconify';
 
 import { signIn } from 'src/auth/auth';
@@ -30,7 +32,7 @@ export function SignInView() {
       setIsSubmitting(true);
       try {
         await signIn(email, password);
-        router.push('/');
+        router.push(RoutePaths.ROOT);
       } catch (err) {
         setError('Invalid email or password');
         console.error(err);
@@ -116,7 +118,7 @@ export function SignInView() {
         <Typography variant="h5">Sign in</Typography>
         <Typography variant="body2" color="text.secondary">
           Don&apos;t have an account?
-          <Link variant="subtitle2" sx={{ ml: 0.5 }} href="/sign-up">
+          <Link variant="subtitle2" sx={{ ml: 0.5 }} href={RoutePaths.SIGN_UP}>
             Get started
           </Link>
         </Typography>
